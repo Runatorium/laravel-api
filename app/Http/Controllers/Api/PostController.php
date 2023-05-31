@@ -18,4 +18,13 @@ class PostController extends Controller
         ]);
 
     }
+
+    public function show($id)
+    {
+        $post = Post::where('id', $id)->with(['technologies', 'type'])->first();
+        return response()->json([
+            'success' => true,
+            'post' => $post
+        ]);
+    }
 }
